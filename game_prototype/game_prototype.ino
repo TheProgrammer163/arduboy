@@ -24,11 +24,13 @@ void draw_entities();
 void setup() {
     arduboy.begin();
     arduboy.clear();
-    arduboy.setFrameRate(30);
+    arduboy.setFrameRate(60);
     arduboy.initRandomSeed();
-    //player.type = EntityType::Player;
-    //player.x = 64 - 4;
-    //player.y = 16 - 4;
+    // ------------------------------ BUG HERE --------------
+    player.type = EntityType::Player;
+    // ------------------------- BUG END --------------
+    player.x = 64 - 4;
+    player.y = 16 - 4;
     
     for(uint8_t x = 0; x < WORLD_WIDTH; x++) {
         for(uint8_t y = 0; y < WORLD_HEIGHT; y++) {

@@ -10,17 +10,28 @@ void draw_walls();
 
 constexpr uint8_t EntityWidth = 8;
 
-enum class EntityType : uint8_t;
-enum class Direction : uint8_t;
+enum class EntityType : uint8_t {
+    None,
+    Player,
+    Knight,
+    Sword,
+};
+
+enum class Direction : uint8_t {
+    Down,
+    Right,
+    Left,
+    Up,
+};
 
 struct Entity {
     public:
-        int8_t x;
-        int8_t y;
-        EntityType type;
-        uint8_t damage_taken;
-        uint8_t state;
-        Direction facing;
+        int8_t x = 0;
+        int8_t y = 0;
+        EntityType type = EntityType::None;
+        uint8_t damage_taken = 0;
+        uint8_t state = 0;
+        Direction facing = Direction::Down;
     public:
         void move(int8_t xmove, int8_t ymove);
         void update();

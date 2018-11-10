@@ -1,36 +1,9 @@
 #include <Arduboy2.h>
 #include "World.h"
 #include "Images.h"
+#include "Entity.h"
 
 extern Arduboy2 arduboy;
-
-enum class EntityType : uint8_t {
-    None,
-    Player,
-    Knight,
-    Sword,
-};
-
-enum class Direction : uint8_t {
-    Down,
-    Right,
-    Left,
-    Up,
-};
-
-struct Entity {
-    public:
-        int8_t x = 0;
-        int8_t y = 0;
-        EntityType type = EntityType::None;
-        uint8_t damage_taken = 0;
-        uint8_t state = 0;
-        Direction facing = Direction::Down;
-    public:
-        void move(int8_t xmove, int8_t ymove);
-        void update();
-        void draw();
-};
 
 void Entity::move(int8_t xmove, int8_t ymove) {
     int8_t xnew = x + xmove;
@@ -65,7 +38,7 @@ void Entity::update() {
             if(arduboy.pressed(RIGHT_BUTTON)) {xinput++;}
             if(arduboy.pressed(UP_BUTTON)) {yinput--;}
             if(arduboy.pressed(DOWN_BUTTON)) {yinput++;}
-            speed = 2;
+            speed = 1;
             break;
         default:
             break;
