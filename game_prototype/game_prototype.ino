@@ -7,12 +7,11 @@
 #include <Arduboy2.h>
 Arduboy2 arduboy;
 
-constexpr uint8_t MAX_ENTITY_COUNT = 10;
-
 #include "Entity.h"
 #include "Images.h"
 #include "World.h"
 
+constexpr uint8_t MAX_ENTITY_COUNT = 10;
 Entity entities[MAX_ENTITY_COUNT];
 
 Entity& player = entities[0];
@@ -30,7 +29,7 @@ void setup() {
     //player.type = EntityType::Player;
     //player.x = 64 - 4;
     //player.y = 16 - 4;
-
+    
     for(uint8_t x = 0; x < WORLD_WIDTH; x++) {
         for(uint8_t y = 0; y < WORLD_HEIGHT; y++) {
             

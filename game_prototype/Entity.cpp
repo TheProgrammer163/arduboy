@@ -35,10 +35,10 @@ struct Entity {
 void Entity::move(int8_t xmove, int8_t ymove) {
     int8_t xnew = x + xmove;
     int8_t ynew = y + ymove;
-    if(!detect_wall(xnew, y)) {
+    if(!::detect_wall(xnew, y)) {
         x = xnew;
     }
-    if(!detect_wall(x, ynew)) {
+    if(!::detect_wall(x, ynew)) {
         y = ynew;
     }
 }
