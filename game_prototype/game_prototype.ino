@@ -40,7 +40,7 @@ void loop() {
     arduboy.clear();
 
     //arduboy.fillScreen(WHITE);
-    draw_walls();
+    draw_world();
     update_entities();
     arduboy.display();
 }

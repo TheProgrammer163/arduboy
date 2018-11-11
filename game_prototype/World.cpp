@@ -50,11 +50,12 @@ bool detect_wall(int8_t x, int8_t y) {
     return ((is_tile_solid(x1, y1) || is_tile_solid(x2, y1) || is_tile_solid(x2, y2) || is_tile_solid(x1, y2)));
 }
 
-void draw_walls() {
+void draw_world() {
     for(uint8_t x = 0; x < WORLD_WIDTH; x++) {
         for(uint8_t y = 0; y < WORLD_HEIGHT; y++) {
             uint8_t frame = get_tile(x, y);
-            Sprites::drawOverwrite (x*8, y*8, spr_world, frame); 
+            //Sprites::drawOverwrite(x*8, y*8, spr_world, frame); 
+            Sprites::drawSelfMasked(x*8, y*8, spr_world, frame);
         }
     }
 }
