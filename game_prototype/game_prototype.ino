@@ -24,29 +24,11 @@ void draw_entities();
 void setup() {
     arduboy.begin();
     arduboy.clear();
-    arduboy.setFrameRate(60);
+    arduboy.setFrameRate(30);
     arduboy.initRandomSeed();
-    // ------------------------------ BUG HERE --------------
     player.type = EntityType::Player;
-    // ------------------------- BUG END --------------
     player.x = 64 - 4;
-    player.y = 16 - 4;
-    
-    for(uint8_t x = 0; x < WORLD_WIDTH; x++) {
-        for(uint8_t y = 0; y < WORLD_HEIGHT; y++) {
-            
-            // clear the level
-            level[x][y] = false;
-            
-            // make borders solid
-            if (x == 0 || x == WORLD_WIDTH-1 || y == 0 || y == WORLD_HEIGHT-1) {
-                level[x][y] = true;
-                continue;
-            }
-            // randomly make some tiles solid
-            if ((rand() % 5) <= 0) {level[x][y] = true;}
-        }
-    }
+    player.y = 32 - 4;
 }
 
 

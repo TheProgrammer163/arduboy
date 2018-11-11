@@ -6,7 +6,16 @@ extern Arduboy2 arduboy;
 
 constexpr uint8_t TILE_WIDTH = 8;
 
-bool level[WORLD_WIDTH][WORLD_HEIGHT];
+uint8_t level[WORLD_WIDTH*WORLD_HEIGHT] = {
+    1,1,0,0,0,2,0,0,0,0,0,12,13,1,1,1,
+    0,5,5,5,0,2,1,12,13,4,4,4,15,0,11,1,
+    0,5,5,5,5,2,1,14,15,4,4,4,1,0,11,11,
+    1,6,5,5,5,2,1,1,0,6,7,6,1,1,1,0,
+    1,1,6,7,6,2,2,2,2,2,2,2,2,2,2,2,
+    2,2,2,2,2,2,1,1,1,11,0,1,1,1,0,0,
+    1,1,1,1,1,1,0,11,11,11,11,0,0,0,0,1,
+    1,1,1,0,0,0,0,0,11,11,1,1,1,1,1,1,
+};
 
 int8_t x_on_grid(int16_t x) {
     x = (x / TILE_WIDTH);
@@ -24,8 +33,12 @@ int8_t y_on_grid(int16_t y) {
     return y;
 }
 
+uint8_t get_tile(uint8_t xIndex, uint8_t yIndex) {
+    return level[WORLD_WIDTH * yIndex + xIndex];  
+}
+
 bool is_tile_solid(int16_t x, int16_t y) {
-    return level[x][y];
+    return (4 <= get_tile(x, y));
 }
 
 bool detect_wall(int8_t x, int8_t y) {
@@ -40,9 +53,8 @@ bool detect_wall(int8_t x, int8_t y) {
 void draw_walls() {
     for(uint8_t x = 0; x < WORLD_WIDTH; x++) {
         for(uint8_t y = 0; y < WORLD_HEIGHT; y++) {
-            if (is_tile_solid(x, y)) {
-                arduboy.drawBitmap(x*TILE_WIDTH, y*TILE_WIDTH, spr_wall, 8, 8, BLACK);
-            }
+            uint8_t frame = get_tile(x, y);
+            Sprites::drawOverwrite (x*8, y*8, spr_world, frame); 
         }
     }
 }

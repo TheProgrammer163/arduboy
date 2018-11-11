@@ -18,8 +18,8 @@ enum class EntityType : uint8_t {
 };
 
 enum class Direction : uint8_t {
-    Down,
     Right,
+    Down,
     Left,
     Up,
 };
