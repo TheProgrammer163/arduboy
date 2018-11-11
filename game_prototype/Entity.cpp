@@ -19,10 +19,7 @@ void Entity::move(int8_t xmove, int8_t ymove) {
 void Entity::draw() {
     switch(type){
         case EntityType::Player:
-            extern Arduboy2 arduboy;
-            arduboy.drawBitmap(x, y, spr_human_outline, 8, 8, BLACK);
-            //arduboy.drawBitmap(x, y, spr_human, 8, 8, WHITE);
-            Sprites::drawSelfMasked(x, y, spr_player, static_cast<uint8_t>(facing)); 
+            Sprites::drawExternalMask(x, y, spr_player, spr_humanoid_mask, static_cast<uint8_t>(facing), 0);
             break;
         default:
             break;
