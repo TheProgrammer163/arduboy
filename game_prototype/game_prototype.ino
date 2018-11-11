@@ -39,7 +39,7 @@ void loop() {
   
     arduboy.clear();
 
-    arduboy.fillScreen(WHITE);
+    //arduboy.fillScreen(WHITE);
     draw_walls();
     update_entities();
     arduboy.display();

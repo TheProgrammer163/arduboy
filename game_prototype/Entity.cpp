@@ -21,10 +21,27 @@ void Entity::draw() {
         case EntityType::Player:
             extern Arduboy2 arduboy;
             arduboy.drawBitmap(x, y, spr_human_outline, 8, 8, BLACK);
-            arduboy.drawBitmap(x, y, spr_human, 8, 8, WHITE);
+            //arduboy.drawBitmap(x, y, spr_human, 8, 8, WHITE);
+            Sprites::drawSelfMasked(x, y, spr_player, static_cast<uint8_t>(facing)); 
             break;
         default:
             break;
+    }
+}
+
+void Entity::updateFacing(int8_t xinput, int8_t yinput) {
+    if (xinput != 0) {
+        if (0 < xinput) {
+            facing = Direction::Right;
+        } else {
+            facing = Direction::Left;
+        }
+    } else if (yinput != 0) {
+        if (0 < yinput) {
+            facing = Direction::Down;
+        } else {
+            facing = Direction::Up;
+        }
     }
 }
 
@@ -38,10 +55,13 @@ void Entity::update() {
             if(arduboy.pressed(RIGHT_BUTTON)) {xinput++;}
             if(arduboy.pressed(UP_BUTTON)) {yinput--;}
             if(arduboy.pressed(DOWN_BUTTON)) {yinput++;}
+            updateFacing(xinput, yinput);
             speed = 1;
             break;
         default:
             break;
     }
-    move(xinput*speed, yinput*speed);
+    if (!(arduboy.pressed(A_BUTTON) || arduboy.pressed(B_BUTTON))) {
+        move(xinput*speed, yinput*speed);
+    }
 }

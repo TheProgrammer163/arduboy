@@ -19,9 +19,9 @@ enum class EntityType : uint8_t {
 
 enum class Direction : uint8_t {
     Right,
-    Down,
-    Left,
     Up,
+    Left,
+    Down,
 };
 
 struct Entity {
@@ -35,5 +35,6 @@ struct Entity {
     public:
         void move(int8_t xmove, int8_t ymove);
         void update();
+        void updateFacing(int8_t xinput, int8_t yinput);
         void draw();
 };
