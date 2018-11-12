@@ -4,7 +4,6 @@
 #include "World.h"
 #include "Images.h"
 
-bool detect_wall(int8_t x, int8_t y);
 void draw_walls();
 
 
@@ -26,8 +25,8 @@ enum class Direction : uint8_t {
 
 struct Entity {
     public:
-        int8_t x = 0;
-        int8_t y = 0;
+        int16_t x = 0;
+        int16_t y = 0;
         EntityType type = EntityType::None;
         uint8_t damage_taken = 0;
         uint8_t state = 0;
