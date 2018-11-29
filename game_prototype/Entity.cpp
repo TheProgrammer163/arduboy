@@ -23,6 +23,13 @@ void Entity::move(int8_t xmove, int8_t ymove) {
 
 extern View view;
 
+uint8_t Entity::getSprite(EntityType type) {
+    switch (type) {
+        case EntityType::Player:
+            return &spr_player;
+    }
+}
+
 void Entity::draw() {
     int16_t drawx = x - view.x * view.width;
     int16_t drawy = y - view.y * view.height;

@@ -1,0 +1,16 @@
+
+// house or dungeon entrence
+4 bytes per building (6 to 10 houses, 3 dungeons)
+	// position as tiles in the world
+	1 byte for the x coordonate
+	1 byte for y
+	1 byte for building layout id (house type, dungeon entrence type)
+	1 byte for building/dungeon id
+
+
+// flat white floor, dotted floor, water
+32 bytes for overworld environment (ground type, tree, water)
+	0000 plain white tile
+	0001 dotted floor
+	0010 water
+	0011 tree0

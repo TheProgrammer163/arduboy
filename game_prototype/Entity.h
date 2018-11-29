@@ -35,5 +35,6 @@ struct Entity {
         void move(int8_t xmove, int8_t ymove);
         void update();
         void updateFacing(int8_t xinput, int8_t yinput);
+        uint8_t getSprite(EntityType type);
         void draw();
 };
