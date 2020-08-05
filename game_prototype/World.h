@@ -14,7 +14,7 @@ extern uint8_t loaded_world_section[SECTION_WIDTH_IN_TILES*SECTION_HEIGHT_IN_TIL
 int8_t x_on_grid(int16_t x);
 int8_t y_on_grid(int16_t y);
 uint8_t get_tile(uint8_t xIndex, uint8_t yIndex);
-uint8_t set_tile(uint8_t xIndex, uint8_t yIndex, uint8_t value);
+void set_tile(uint8_t xIndex, uint8_t yIndex, uint8_t value);
 bool is_tile_solid(int16_t x, int16_t y);
 bool detect_wall(int16_t x, int16_t y);
 void draw_world();

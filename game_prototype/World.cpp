@@ -81,7 +81,7 @@ int8_t y_on_grid_progmem(int16_t y) {
     
     return y;
 }
-uint8_t set_tile(uint8_t xIndex, uint8_t yIndex, uint8_t value) {
+void set_tile(uint8_t xIndex, uint8_t yIndex, uint8_t value) {
     loaded_world_section[SECTION_WIDTH_IN_TILES * yIndex + xIndex] = value;
 }
 
