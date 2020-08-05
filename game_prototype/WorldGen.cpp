@@ -2,7 +2,7 @@
 #include <Arduino.h>
 #include "WorldGen.h"
 
-static int8_t WorldGen::sin(int16_t n) {
+int8_t WorldGen::sin(int16_t n) {
     bool positive = (0 <= n);
     int16_t i = (n % (sineTableSize * 2));
     uint8_t secondQuadrant = false;
